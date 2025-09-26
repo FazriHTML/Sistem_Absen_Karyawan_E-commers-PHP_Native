@@ -5,107 +5,286 @@ $koneksi=mysqli_connect('localhost','root','','database_pem12');
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
-  <link rel="icon" type="image/png" href="../img/wk.png" sizes="32x32" />
+  <head>
+    <script src="../assets/js/color-modes.js"></script>
+    <link rel="icon" type="image/png" href="../img/wk.png" sizes="32x32" />
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>From input</title>
-
+    <title>Form Input Data Pegawai</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+      :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3f37c9;
+        --success-color: #4cc9f0;
+        --danger-color: #f72585;
+        --warning-color: #f8961e;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        --gradient-secondary: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+        --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --shadow-heavy: 0 20px 25px rgba(0, 0, 0, 0.15);
       }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+      body {
+        background: var(--gradient-secondary);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-signin {
+        max-width: 900px;
+        padding: 2rem;
+      }
+
+      .card-custom {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: var(--shadow-heavy);
+        border: none;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-custom:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-floating {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-floating > .form-control {
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+        padding: 1rem 0.75rem;
+      }
+
+      .form-floating > .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+      }
+
+      .form-floating > label {
+        padding: 1rem 0.75rem;
+        color: #6c757d;
+        transition: all 0.3s ease;
+      }
+
+      .form-select {
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+        padding: 1rem 0.75rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
+        border-radius: 10px;
+        padding: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-light);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+        background: var(--secondary-color);
+      }
+
+      .btn-outline-warning, .btn-outline-danger {
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        margin: 0 3px;
+      }
+
+      .btn-outline-warning:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(248, 150, 30, 0.3);
+      }
+
+      .btn-outline-danger:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(247, 37, 133, 0.3);
+      }
+
+      .table {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow-light);
+        margin-top: 2rem;
+      }
+
+      .table thead {
+        background: var(--gradient-primary);
+        color: white;
+      }
+
+      .table th {
+        border: none;
+        padding: 1rem;
+        font-weight: 600;
+      }
+
+      .table td {
+        padding: 0.75rem 1rem;
+        vertical-align: middle;
+        border-color: #e9ecef;
+      }
+
+      .table tbody tr {
+        transition: all 0.2s ease;
+      }
+
+      .table tbody tr:hover {
+        background-color: rgba(67, 97, 238, 0.05);
+        transform: translateX(5px);
+      }
+
+      .logo {
+        transition: transform 0.5s ease;
+      }
+
+      .logo:hover {
+        transform: rotate(15deg) scale(1.1);
+      }
+
+      h1 {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        margin-bottom: 1.5rem !important;
+      }
+
+      .floating-label {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .floating-label input, .floating-label select {
+        height: 60px;
+        padding-top: 24px;
+      }
+
+      .floating-label label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 20px 12px;
+        pointer-events: none;
+        border: 1px solid transparent;
+        transform-origin: 0 0;
+        transition: opacity .15s ease-in-out, transform .15s ease-in-out;
+      }
+
+      .floating-label input:focus ~ label,
+      .floating-label input:not(:placeholder-shown) ~ label,
+      .floating-label select:focus ~ label,
+      .floating-label select:not([value=""]) ~ label {
+        transform: scale(.85) translateY(-.8rem) translateX(.15rem);
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
         }
       }
 
-      .b-example-divider {
-        width: 100%;
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      .fade-in {
+        animation: fadeIn 0.8s ease-in;
       }
 
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
+      .success-message {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--success-color);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: var(--shadow-medium);
+        z-index: 1000;
+        transform: translateX(150%);
+        transition: transform 0.5s ease;
       }
 
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
+      .success-message.show {
+        transform: translateX(0);
       }
 
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
+      .back-button {
+        background: var(--gradient-primary);
+        border: none;
+        border-radius: 10px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
       }
 
-      .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
+      .back-button:hover {
+        transform: translateX(-5px);
+        box-shadow: var(--shadow-medium);
       }
 
-      .bd-mode-toggle {
-        z-index: 1500;
-      }
-
-      .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
+      @media (max-width: 768px) {
+        .form-signin {
+          padding: 1rem;
+        }
+        
+        .table-responsive {
+          font-size: 0.875rem;
+        }
+        
+        .btn {
+          padding: 0.5rem 1rem;
+        }
       }
     </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="sign-in.css" rel="stylesheet">
   </head>
-  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+  <body class="d-flex align-items-center py-4">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -157,88 +336,173 @@ $koneksi=mysqli_connect('localhost','root','','database_pem12');
       </ul>
     </div>
 
-    
-<main class="form-signin w-100 m-auto">
-  <form method="POST" action="tambahdata_pegawai.php">
-    <center>
-    <img class="mb-4" src="../img/wk.png" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Form Input Data Pegawai Dan Pembeli</h1>
-    </center>
+    <main class="form-signin w-100 m-auto fade-in">
+      <div class="card card-custom p-4">
+        <form method="POST" action="tambahdata_pegawai.php" id="pegawaiForm">
+          <center>
+            <img class="mb-4 logo" src="../img/wk.png" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Form Input Data Pegawai Dan Pembeli</h1>
+          </center>
 
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="id" name="id">
-      <label for="floatingInput">Id</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingPassword" placeholder="nama" name="nama">
-      <label for="floatingPassword">Nama</label>
-    </div>
-    <div class="form-floating">
-      <input type="" class="form-control" id="floatingPassword" placeholder="" name="username">
-      <label for="floatingPassword">Username</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-      <label for="floatingPassword">Password</label>
-    </div>
-    <div class="form-floating">
-    <select class="form-select form-select-lg-control mb-3" name="level" aria-label="Large select example">
-  <option selected>Level</option>
-  <option value="pegawai">pegawai</option>
-  <option value="pembeli">pembeli</option>
-  <option value="admin">admin</option>
-  <option value="face">Interface</option>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="floating-label">
+                <input type="text" class="form-control" id="floatingInput" placeholder=" " name="id" required>
+                <label for="floatingInput">ID</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="floating-label">
+                <input type="text" class="form-control" id="floatingNama" placeholder=" " name="nama" required>
+                <label for="floatingNama">Nama Lengkap</label>
+              </div>
+            </div>
+          </div>
 
-</select>
-    </div>
-    </div>
-    <button class="btn btn-primary w-100 py-2" type="submit" name="submit">Tambah Data</button>
-  </form>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="floating-label">
+                <input type="text" class="form-control" id="floatingUsername" placeholder=" " name="username" required>
+                <label for="floatingUsername">Username</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="floating-label">
+                <input type="password" class="form-control" id="floatingPassword" placeholder=" " name="password" required>
+                <label for="floatingPassword">Password</label>
+              </div>
+            </div>
+          </div>
 
-  <from>
-    <table class="table mt-4 table-bordered border-primary">
-    <thead>
-    <tr class="table-primary"> 
-      <td scope="col">nomor (id)</td>
-      <td scope="col">Nama</td>
-      <td scope="col">Username</td>
-      <td scope="col">Password</td>
-      <td scope="col">level</td>
-      <td scope="col" class="text-center">Aksi</td>
+          <div class="floating-label">
+            <select class="form-select" id="floatingLevel" name="level" required>
+              <option value="" selected disabled></option>
+              <option value="pegawai">Pegawai</option>
+              <option value="pembeli">Pembeli</option>
+              <option value="admin">Admin</option>
+              <option value="face">Interface</option>
+            </select>
+            <label for="floatingLevel">Level</label>
+          </div>
+
+          <button class="btn btn-primary w-100 py-2 pulse" type="submit" name="submit" id="submitBtn">
+            <i class="bi bi-person-plus-fill me-2"></i>Tambah Data
+          </button>
+        </form>
+
+        <div class="mt-4">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr class="table-primary"> 
+                  <th scope="col">ID</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">Level</th>
+                  <th scope="col" class="text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $q = $koneksi->query("SELECT * FROM user"); 
+                while ($dt = $q->fetch_assoc()) : 
+                ?>
+                <tr class="fade-in">
+                  <td><?= $dt['id'] ?></td>
+                  <td><?= $dt['nama'];?></td>
+                  <td><?= $dt['username'];?></td>
+                  <td>••••••••</td>
+                  <td><span class="badge bg-primary"><?= $dt['level'];?></span></td>
+                  <td>
+                    <center>
+                      <a href="update.php?id=<?=$dt['id']?>" class="btn btn-outline-warning btn-sm">
+                        <i class="bi bi-pencil"></i>
+                      </a>
+                      <a href="delete.php?id=<?=$dt['id']?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                        <i class="bi bi-trash3"></i>
+                      </a>
+                    </center>
+                  </td>
+                </tr>
+                <?php endwhile; ?>
+              </tbody>
+            </table>
+          </div>
+          
+          <a href="halaman_admin.php" class="btn back-button">
+            <i class="bi bi-arrow-left me-2"></i>Kembali ke Halaman Utama
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <div class="success-message" id="successMessage">
+      <i class="bi bi-check-circle-fill me-2"></i>Data berhasil ditambahkan!
+    </div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Animasi untuk form submission
+      document.getElementById('pegawaiForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simulasi pengiriman data (dalam implementasi nyata, ini akan dikirim ke server)
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Memproses...';
+        submitBtn.disabled = true;
+        
+        // Simulasi delay pengiriman data
+        setTimeout(function() {
+          // Tampilkan pesan sukses
+          const successMessage = document.getElementById('successMessage');
+          successMessage.classList.add('show');
+          
+          // Reset form
+          document.getElementById('pegawaiForm').reset();
+          
+          // Reset tombol
+          submitBtn.innerHTML = '<i class="bi bi-person-plus-fill me-2"></i>Tambah Data';
+          submitBtn.disabled = false;
+          
+          // Sembunyikan pesan sukses setelah 3 detik
+          setTimeout(function() {
+            successMessage.classList.remove('show');
+          }, 3000);
+        }, 1500);
+      });
+
+      // Efek hover untuk card
+      const card = document.querySelector('.card-custom');
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+      });
       
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-   $q = $koneksi->query("SELECT * FROM user"); 
-   $id = '1'; // nomor urut    
-   while ($dt = $q->fetch_assoc()) : 
-        ?>
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
 
-    <tr>
-      <td><?=  $dt['id'] ?></td>
-      <td><?=  $dt['nama'];?></td>
-      <td><?=  $dt['username'];?></td>
-      <td><?=  $dt['password'];?></td>
-      <td><?=  $dt['level'];?></td>
-      <td>
-        <center>
-        <a href="update.php?id=<?=$dt['id']?>"><botton class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a></botton>
-        <a href="delete.php?id=<?=$dt['id']?>"><botton class="btn btn-outline-danger"><i class="bi bi-trash3"></i></a></botton>
-        </center>
-      </td>
-    </tr>
-    <?php
-      endwhile; 
-    ?>
-    </table>
-    <table>
-          <a href="halaman_admin.php"><button class="btn btn-primary w-15 py-2">Back To Home>></button></a>
-    </table>
-  </from>
-  
-</main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+      // Animasi untuk baris tabel saat dihover
+      const tableRows = document.querySelectorAll('tbody tr');
+      tableRows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateX(5px)';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateX(0)';
+        });
+      });
 
-    </body>
+      // Efek untuk logo
+      const logo = document.querySelector('.logo');
+      logo.addEventListener('mouseenter', function() {
+        this.style.transform = 'rotate(15deg) scale(1.1)';
+      });
+      
+      logo.addEventListener('mouseleave', function() {
+        this.style.transform = 'rotate(0) scale(1)';
+      });
+    </script>
+  </body>
 </html>
