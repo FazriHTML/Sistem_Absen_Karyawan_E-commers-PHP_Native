@@ -6,17 +6,20 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="description" content="MSI Store - Official MSI Laptop Retailer" />
+    <meta name="author" content="FZR Store" />
     <meta name="generator" content="Hugo 0.122.0" />
     <link rel="icon" type="product/png" href="img/wk.png" sizes="32x32" />
-    <title>Store By FZR</title>
+    <title>MSI Store By FZR</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
       .bd-placeholder-img {
@@ -95,6 +98,88 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+
+      /* Custom Styles */
+      .navbar-brand img {
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-brand:hover img {
+        transform: scale(1.1);
+      }
+
+      .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card img {
+        height: 200px;
+        object-fit: contain;
+        padding: 15px;
+      }
+
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("product/nav\ cvr.webp");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .price-tag {
+        font-weight: bold;
+        color: #dc3545;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #6c757d;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #dc3545;
+      }
+
+      .category-nav {
+        background-color: #f8f9fa;
+        padding: 15px 0;
+        margin-bottom: 30px;
+      }
+
+      .category-nav .nav-link {
+        color: #495057;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .category-nav .nav-link:hover {
+        color: #dc3545;
+      }
+
+      .category-nav .nav-link.active {
+        color: #dc3545;
+        border-bottom: 2px solid #dc3545;
+      }
+
+      .product-count {
+        background-color: #dc3545;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        margin-left: 5px;
+      }
     </style>
   </head>
   <body>
@@ -150,215 +235,388 @@
       </ul>
     </div>
 
+    <!-- Navbar -->
     <header data-bs-theme="dark">
-      <div class="navbar navbar-dark bg-secondary shadow-sm border border-danger"  style="background-image: url(
-        product/nav\ cvr.webp
-      );">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center mx-auto">
-            <img src="product/wk.png"width="50" height="50">   
-            <strong>MSI STORE</strong>
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <img src="product/wk.png" width="50" height="50" alt="MSI Logo" />
+            <strong class="ms-2">MSI STORE</strong>
           </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Products </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Gaming Laptops</a></li>
+                  <li><a class="dropdown-item" href="#">Business Laptops</a></li>
+                  <li><a class="dropdown-item" href="#">Accessories</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">All Products</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+
+            <div class="d-flex">
+              <div class="input-group me-2">
+                <input type="text" class="form-control" placeholder="Search products..." aria-label="Search products" />
+                <button class="btn btn-outline-light" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+
+              <div class="btn-group ms-2">
+                <button type="button" class="btn btn-outline-light position-relative">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+                </button>
+                <button type="button" class="btn btn-outline-light">
+                  <i class="fas fa-user"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </nav>
     </header>
 
     <main>
-      <section class="py-5 text-center container">
-          <div class="row-md-lg-6  text-center border border-danger">
-            <img src="product/cvr.jpg" class="card-img-top" alt="...">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="display-4 fw-bold">MSI Gaming Laptops</h1>
+              <p class="lead mb-4">Experience ultimate performance with MSI's cutting-edge gaming laptops. Built for gamers, by gamers.</p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-danger btn-lg px-4 me-sm-3">Shop Now</button>
+                <button type="button" class="btn btn-outline-light btn-lg px-4">Learn More</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- Category Navigation -->
+      <div class="category-nav">
+        <div class="container">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">All Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Thin Series</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cyborg Series</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sword Series</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Katana Series</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Products Section -->
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="row mb-4">
             <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/THIN 15.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI THIN 15 B12U</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
-                    </div>
-                    <small class="text-body-secondary">RP 9.599.000</small>
-                  </div>
-                </div>
-              </div>
+              <h2 class="text-center mb-3">Featured Products</h2>
+              <p class="text-center text-muted">Discover our latest and most popular MSI gaming laptops</p>
             </div>
-            <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/THIN A15.png"
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI THIN A15 B7V</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
-                    </div>
-                    <small class="text-body-secondary">RP 15.099.000</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/thin A15 BU.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI THIN A15 BU</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
-                    </div>
-                    <small class="text-body-secondary">RP 9.499.000</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
 
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/Cyborg 15A3U.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI CYBORG 15 A13U</p>
-                  <div class="d-flex justify-content-between align-items-center">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/THIN 15.png" class="card-img-top" alt="MSI THIN 15 B12U" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI THIN 15 B12U</h5>
+                  <p class="card-text flex-grow-1">Ultra-thin gaming laptop with powerful performance and sleek design.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
-                    <small class="text-body-secondary">RP 13.160.00</small>
+                    <span class="price-tag">RP 9.599.000</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/cyboarg 15 AI A1V.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI CYBORG 15 AI A1V</p>
-                  <div class="d-flex justify-content-between align-items-center">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/THIN A15.png" class="card-img-top" alt="MSI THIN A15 B7V" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI THIN A15 B7V</h5>
+                  <p class="card-text flex-grow-1">Advanced gaming laptop with high-performance components and stunning display.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
-                    <small class="text-body-secondary">RP.</small>
+                    <span class="price-tag">RP 15.099.000</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/cyborg 14 A13V.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI CYBROG 14 A13V</p>
-                  <div class="d-flex justify-content-between align-items-center">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/thin A15 BU.png" class="card-img-top" alt="MSI THIN A15 BU" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI THIN A15 BU</h5>
+                  <p class="card-text flex-grow-1">Budget-friendly gaming laptop without compromising on performance.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
-                    <small class="text-body-secondary">RP.</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/sword 16 hx b14v.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI SWORD 16 HX B14V</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
-                    </div>
-                    <small class="text-body-secondary">RP.</small>
+                    <span class="price-tag">RP 9.499.000</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <img src="product/katana 15 B13V.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI KATANA 15 B13V</p>
-                  <div class="d-flex justify-content-between align-items-center">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/Cyborg 15A3U.png" class="card-img-top" alt="MSI CYBORG 15 A13U" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI CYBORG 15 A13U</h5>
+                  <p class="card-text flex-grow-1">Futuristic design with cutting-edge technology for immersive gaming.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
-                    <small class="text-body-secondary">RP.</small>
+                    <span class="price-tag">RP 13.160.000</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm border border-danger">
-                <IMG src="product/Cyborg 15A3U.png">
-                <title></title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">MSI KATANA GF66-12U</p>
-                  <div class="d-flex justify-content-between align-items-center">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/cyboarg 15 AI A1V.png" class="card-img-top" alt="MSI CYBORG 15 AI A1V" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI CYBORG 15 AI A1V</h5>
+                  <p class="card-text flex-grow-1">AI-enhanced gaming laptop for optimized performance and experience.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href=""><button type="button" class="btn btn-sm btn-outline-secondary">VIEW</button></a>
-                      <a href=""<button type="button" class="btn btn-sm btn-outline-secondary">BUY</button></a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
-                    <small class="text-body-secondary">RP.</small>
+                    <span class="price-tag">RP 14.500.000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/cyborg 14 A13V.png" class="card-img-top" alt="MSI CYBROG 14 A13V" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI CYBROG 14 A13V</h5>
+                  <p class="card-text flex-grow-1">Compact gaming laptop with powerful specs for on-the-go gaming.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
+                    </div>
+                    <span class="price-tag">RP 12.800.000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/sword 16 hx b14v.png" class="card-img-top" alt="MSI SWORD 16 HX B14V" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI SWORD 16 HX B14V</h5>
+                  <p class="card-text flex-grow-1">Powerful gaming laptop with large display and high-end components.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
+                    </div>
+                    <span class="price-tag">RP 18.500.000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/katana 15 B13V.png" class="card-img-top" alt="MSI KATANA 15 B13V" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI KATANA 15 B13V</h5>
+                  <p class="card-text flex-grow-1">Sleek design with powerful performance for competitive gaming.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
+                    </div>
+                    <span class="price-tag">RP 16.200.000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm border border-danger h-100">
+                <img src="product/Cyborg 15A3U.png" class="card-img-top" alt="MSI KATANA GF66-12U" />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">MSI KATANA GF66-12U</h5>
+                  <p class="card-text flex-grow-1">Versatile gaming laptop with balanced performance and portability.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
+                    </div>
+                    <span class="price-tag">RP 11.500.000</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="row mt-5">
+            <div class="col text-center">
+              <button class="btn btn-outline-danger btn-lg">View All Products</button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Newsletter Section -->
+      <section class="py-5 bg-dark text-white">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Subscribe to Our Newsletter</h3>
+              <p class="text-light">Get the latest updates on new products, promotions, and gaming tips.</p>
+            </div>
+            <div class="col-md-6">
+              <form class="d-flex">
+                <input type="email" class="form-control me-2" placeholder="Enter your email" required />
+                <button class="btn btn-danger" type="submit">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="text-body-secondary py-5">
+    <!-- Footer -->
+    <footer class="bg-light text-body-secondary py-5">
       <div class="container">
-        <p class="float-end mb-1">
-          <a href="#">Back to top</a>
-        </p>
-        <p class="mb-1">Copyright &copy;Shop Msi By FZR Store</p>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">MSI STORE</h5>
+            <p>Your trusted partner for high-performance gaming laptops and accessories.</p>
+            <div class="mt-4">
+              <a href="#" class="text-body-secondary me-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-body-secondary me-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-body-secondary me-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-body-secondary"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Products</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#">Gaming Laptops</a></li>
+              <li><a href="#">Business Laptops</a></li>
+              <li><a href="#">Accessories</a></li>
+              <li><a href="#">Gaming Gear</a></li>
+              <li><a href="#">Software</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Support</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns & Warranty</a></li>
+              <li><a href="#">Technical Support</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Contact</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jakarta, Indonesia</li>
+              <li class="mb-2"><i class="fas fa-phone me-2"></i> +62 21 1234 5678</li>
+              <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@msistore-fzr.com</li>
+              <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-6PM</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="mb-0">Copyright &copy; 2023 Shop MSI By FZR Store. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#" class="text-body-secondary me-3">Privacy Policy</a>
+            <a href="#" class="text-body-secondary me-3">Terms of Service</a>
+            <a href="#" class="text-body-secondary">Sitemap</a>
+          </div>
+        </div>
       </div>
     </footer>
+
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Simple JavaScript for interactive features
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add to cart functionality
+        const buyButtons = document.querySelectorAll(".btn-outline-danger");
+        buyButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const productName = this.closest(".card").querySelector(".card-title").textContent;
+            alert(`${productName} has been added to your cart!`);
+          });
+        });
+
+        // View product functionality
+        const viewButtons = document.querySelectorAll(".btn-outline-secondary");
+        viewButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const productName = this.closest(".card").querySelector(".card-title").textContent;
+            alert(`Viewing details for: ${productName}`);
+          });
+        });
+
+        // Newsletter subscription
+        const newsletterForm = document.querySelector("form");
+        if (newsletterForm) {
+          newsletterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
+            this.reset();
+          });
+        }
+      });
+    </script>
   </body>
 </html>
