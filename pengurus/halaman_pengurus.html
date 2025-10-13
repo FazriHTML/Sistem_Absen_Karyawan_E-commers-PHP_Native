@@ -180,6 +180,74 @@
         font-size: 0.7rem;
         margin-left: 5px;
       }
+
+      /* Styling untuk modal popup produk */
+      .product-modal .modal-content {
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .product-modal .modal-header {
+        background: linear-gradient(135deg, #dc3545, #a71e2a);
+        color: white;
+        border-bottom: none;
+      }
+
+      .product-modal .modal-body {
+        padding: 0;
+      }
+
+      .product-image-container {
+        background-color: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .product-image-container img {
+        max-height: 300px;
+        object-fit: contain;
+      }
+
+      .product-specs {
+        padding: 25px;
+      }
+
+      .spec-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .spec-item:last-child {
+        border-bottom: none;
+      }
+
+      .spec-label {
+        font-weight: 600;
+        color: #495057;
+      }
+
+      .spec-value {
+        color: #6c757d;
+      }
+
+      .product-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #dc3545;
+        margin: 15px 0;
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .product-actions .btn {
+        flex: 1;
+      }
     </style>
   </head>
   <body>
@@ -353,7 +421,7 @@
                   <p class="card-text flex-grow-1">Ultra-thin gaming laptop with powerful performance and sleek design.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="1">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 9.599.000</span>
@@ -369,7 +437,7 @@
                   <p class="card-text flex-grow-1">Advanced gaming laptop with high-performance components and stunning display.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="2">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 15.099.000</span>
@@ -385,7 +453,7 @@
                   <p class="card-text flex-grow-1">Budget-friendly gaming laptop without compromising on performance.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="3">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 9.499.000</span>
@@ -401,7 +469,7 @@
                   <p class="card-text flex-grow-1">Futuristic design with cutting-edge technology for immersive gaming.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="4">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 13.160.000</span>
@@ -417,7 +485,7 @@
                   <p class="card-text flex-grow-1">AI-enhanced gaming laptop for optimized performance and experience.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="5">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 14.500.000</span>
@@ -433,7 +501,7 @@
                   <p class="card-text flex-grow-1">Compact gaming laptop with powerful specs for on-the-go gaming.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="6">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 12.800.000</span>
@@ -449,7 +517,7 @@
                   <p class="card-text flex-grow-1">Powerful gaming laptop with large display and high-end components.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="7">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 18.500.000</span>
@@ -465,7 +533,7 @@
                   <p class="card-text flex-grow-1">Sleek design with powerful performance for competitive gaming.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="8">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 16.200.000</span>
@@ -481,7 +549,7 @@
                   <p class="card-text flex-grow-1">Versatile gaming laptop with balanced performance and portability.</p>
                   <div class="d-flex justify-content-between align-items-center mt-auto">
                     <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">VIEW</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary view-product" data-product-id="9">VIEW</a>
                       <a href="#" class="btn btn-sm btn-outline-danger">BUY</a>
                     </div>
                     <span class="price-tag">RP 11.500.000</span>
@@ -581,41 +649,225 @@
       </div>
     </footer>
 
+    <!-- Modal Popup untuk Detail Produk -->
+    <div class="modal fade product-modal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="product-image-container">
+                  <img id="modalProductImage" src="" alt="Product Image" class="img-fluid" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="product-specs">
+                  <h3 id="modalProductTitle" class="mb-3"></h3>
+                  <p id="modalProductDescription" class="text-muted mb-4"></p>
+
+                  <div class="product-price" id="modalProductPrice"></div>
+
+                  <h5 class="mb-3">Specifications</h5>
+                  <div id="modalProductSpecs">
+                    <!-- Spesifikasi produk akan dimasukkan di sini melalui JavaScript -->
+                  </div>
+
+                  <div class="product-actions">
+                    <button class="btn btn-danger"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                    <button class="btn btn-outline-secondary"><i class="fas fa-heart me-2"></i>Wishlist</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // Simple JavaScript for interactive features
-      document.addEventListener("DOMContentLoaded", function () {
-        // Add to cart functionality
-        const buyButtons = document.querySelectorAll(".btn-outline-danger");
-        buyButtons.forEach((button) => {
-          button.addEventListener("click", function (e) {
-            e.preventDefault();
-            const productName = this.closest(".card").querySelector(".card-title").textContent;
-            alert(`${productName} has been added to your cart!`);
-          });
-        });
+      // Data produk untuk popup
+      const products = {
+        1: {
+          title: "MSI THIN 15 B12U",
+          description: "Ultra-thin gaming laptop with powerful performance and sleek design.",
+          price: "RP 9.599.000",
+          image: "product/THIN 15.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i5-12450H" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 3050" },
+            { label: "Memory", value: "8GB DDR4" },
+            { label: "Storage", value: "512GB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "1.8 kg" },
+          ],
+        },
+        2: {
+          title: "MSI THIN A15 B7V",
+          description: "Advanced gaming laptop with high-performance components and stunning display.",
+          price: "RP 15.099.000",
+          image: "product/THIN A15.png",
+          specs: [
+            { label: "Processor", value: "AMD Ryzen 7 7735HS" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 4060" },
+            { label: "Memory", value: "16GB DDR5" },
+            { label: "Storage", value: "1TB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.1 kg" },
+          ],
+        },
+        3: {
+          title: "MSI THIN A15 BU",
+          description: "Budget-friendly gaming laptop without compromising on performance.",
+          price: "RP 9.499.000",
+          image: "product/thin A15 BU.png",
+          specs: [
+            { label: "Processor", value: "AMD Ryzen 5 7535HS" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 3050" },
+            { label: "Memory", value: "8GB DDR5" },
+            { label: "Storage", value: "512GB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.0 kg" },
+          ],
+        },
+        4: {
+          title: "MSI CYBORG 15 A13U",
+          description: "Futuristic design with cutting-edge technology for immersive gaming.",
+          price: "RP 13.160.000",
+          image: "product/Cyborg 15A3U.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i7-13620H" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 4050" },
+            { label: "Memory", value: "16GB DDR5" },
+            { label: "Storage", value: "1TB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.3 kg" },
+          ],
+        },
+        5: {
+          title: "MSI CYBORG 15 AI A1V",
+          description: "AI-enhanced gaming laptop for optimized performance and experience.",
+          price: "RP 14.500.000",
+          image: "product/cyboarg 15 AI A1V.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i7-14650HX" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 4060" },
+            { label: "Memory", value: "16GB DDR5" },
+            { label: "Storage", value: "1TB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.2 kg" },
+          ],
+        },
+        6: {
+          title: "MSI CYBROG 14 A13V",
+          description: "Compact gaming laptop with powerful specs for on-the-go gaming.",
+          price: "RP 12.800.000",
+          image: "product/cyborg 14 A13V.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i7-13620H" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 4050" },
+            { label: "Memory", value: "16GB DDR5" },
+            { label: "Storage", value: "1TB NVMe SSD" },
+            { label: "Display", value: '14" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "1.7 kg" },
+          ],
+        },
+        7: {
+          title: "MSI SWORD 16 HX B14V",
+          description: "Powerful gaming laptop with large display and high-end components.",
+          price: "RP 18.500.000",
+          image: "product/sword 16 hx b14v.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i7-14650HX" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 4060" },
+            { label: "Memory", value: "16GB DDR5" },
+            { label: "Storage", value: "1TB NVMe SSD" },
+            { label: "Display", value: '16" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.6 kg" },
+          ],
+        },
+        8: {
+          title: "MSI KATANA 15 B13V",
+          description: "Sleek design with powerful performance for competitive gaming.",
+          price: "RP 16.200.000",
+          image: "product/katana 15 B13V.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i7-13620H" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 4060" },
+            { label: "Memory", value: "16GB DDR5" },
+            { label: "Storage", value: "1TB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.3 kg" },
+          ],
+        },
+        9: {
+          title: "MSI KATANA GF66-12U",
+          description: "Versatile gaming laptop with balanced performance and portability.",
+          price: "RP 11.500.000",
+          image: "product/Cyborg 15A3U.png",
+          specs: [
+            { label: "Processor", value: "Intel Core i5-12450H" },
+            { label: "Graphics", value: "NVIDIA GeForce RTX 3050" },
+            { label: "Memory", value: "8GB DDR4" },
+            { label: "Storage", value: "512GB NVMe SSD" },
+            { label: "Display", value: '15.6" FHD (1920x1080), 144Hz' },
+            { label: "Operating System", value: "Windows 11 Home" },
+            { label: "Weight", value: "2.2 kg" },
+          ],
+        },
+      };
 
-        // View product functionality
-        const viewButtons = document.querySelectorAll(".btn-outline-secondary");
+      // Event listener untuk tombol VIEW
+      document.addEventListener("DOMContentLoaded", function () {
+        const viewButtons = document.querySelectorAll(".view-product");
+        const productModal = new bootstrap.Modal(document.getElementById("productModal"));
+
         viewButtons.forEach((button) => {
           button.addEventListener("click", function (e) {
             e.preventDefault();
-            const productName = this.closest(".card").querySelector(".card-title").textContent;
-            alert(`Viewing details for: ${productName}`);
+            const productId = this.getAttribute("data-product-id");
+            const product = products[productId];
+
+            if (product) {
+              // Mengisi modal dengan data produk
+              document.getElementById("modalProductTitle").textContent = product.title;
+              document.getElementById("modalProductDescription").textContent = product.description;
+              document.getElementById("modalProductPrice").textContent = product.price;
+              document.getElementById("modalProductImage").src = product.image;
+              document.getElementById("modalProductImage").alt = product.title;
+
+              // Mengisi spesifikasi produk
+              const specsContainer = document.getElementById("modalProductSpecs");
+              specsContainer.innerHTML = "";
+
+              product.specs.forEach((spec) => {
+                const specItem = document.createElement("div");
+                specItem.className = "spec-item";
+                specItem.innerHTML = `
+                  <span class="spec-label">${spec.label}</span>
+                  <span class="spec-value">${spec.value}</span>
+                `;
+                specsContainer.appendChild(specItem);
+              });
+
+              // Menampilkan modal
+              productModal.show();
+            }
           });
         });
-
-        // Newsletter subscription
-        const newsletterForm = document.querySelector("form");
-        if (newsletterForm) {
-          newsletterForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
-            this.reset();
-          });
-        }
       });
     </script>
   </body>
